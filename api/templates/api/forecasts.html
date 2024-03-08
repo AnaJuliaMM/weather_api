@@ -27,42 +27,24 @@
     </header>
 
     <main class="main_forecast_mobile">
-      <div class="weather_today">
-        <header class="header_forecast_today">
-          <p>2024-02-01 12:00</p>
-          <span>
+      <div class="forecast_list">
+        {% for weather in weathers %}
+        <div class="weather_forecast">
+          <div class="data_condition">
+            <span class="header_forecast">{{ weather.date_time }}</span>
+            <span>Ensolarado</span>
+          </div>
+          <div class="infos">
+            <span>Pressão Atmosférica: 1012 hPa</span>
+            <span>Umidade: 60%</span>
+            <span>Precipitação: 20%</span>
+          </div>
+          <span class="temperature"><p>{{ weather.temperature }}</p></span>
+          <div class="button_edit_delete">
             <button>Editar</button>
             <button>Deletar</button>
-          </span>
-        </header>
-        <div class="header_temperature_wrapper">
-          <span class="weather_condition"><p>Ensolarado</p></span>
-          <span><p>50 °C</p></span>
-        </div>
-        <div class="infos">
-          <span>Pressão Atmosférica: 1012 hPa</span>
-          <span>Umidade: 60%</span>
-          <span>Precipitação: 20%</span>
-        </div>
-      </div>
-      <div class="forecast_list">
-        {% for weather in weathers %}    
-          <div class="weather_forecast">
-            <div class="data_condition">
-              <span class="header_forecast">{{ weather.date_time }}</span>
-              <span>Ensolarado</span>
-            </div>
-            <div class="infos">
-              <span>Pressão Atmosférica: 1012 hPa</span>
-              <span>Umidade: 60%</span>
-              <span>Precipitação: 20%</span>
-            </div>
-            <span class="temperature"><p>{{ weather.temperature }}</p></span>
-            <div class="button_edit_delete">
-              <button>Editar</button>
-              <button>Deletar</button>
-            </div>
           </div>
+        </div>
         {% endfor %}
       </div>
     </main>
