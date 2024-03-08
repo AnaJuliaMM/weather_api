@@ -85,6 +85,8 @@ WSGI_APPLICATION = 'core.wsgi.application'
 #     }
 # }
 
+MONGO_CONNECTION_STRING = f'mongodb://{os.getenv("DB_HOST")}:{os.getenv("DB_PORT")}/'
+
 
 
 # Password validation
