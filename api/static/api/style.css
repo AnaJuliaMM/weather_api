@@ -210,8 +210,8 @@ header button:hover,
   flex-direction: column;
 
   gap: 10px;
-  width: 60%;
   max-height: 80vh;
+  width: 100%;
   padding: 10px;
   overflow-y: scroll;
 
