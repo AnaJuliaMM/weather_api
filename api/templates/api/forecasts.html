@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Previsões</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'api/style.css' %}" />
+  </head>
+  <body class="forecast_wrapper">
+    <header>
+      <div class="filter_wrapper">
+        <input type="datetime-local" id="datetime" name="datetime" />
+        <input
+          type="text"
+          id="city_name"
+          name="city_name"
+          placeholder="Cidade"
+        />
+        <button type="submit"><a href="./post_forecast.html">+</a></button>
+      </div>
+      <nav class="account_settings">
+        <span><a href="./users.html">Usuários</a></span>
+        <span><a href="./my_account.html">Minha conta</a></span>
+        <span><a href="../index.html">Sair</a></span>
+      </nav>
+    </header>
+
+    <main class="main_forecast_mobile">
+      <div class="weather_today">
+        <header class="header_forecast_today">
+          <p>2024-02-01 12:00</p>
+          <span>
+            <button>Editar</button>
+            <button>Deletar</button>
+          </span>
+        </header>
+        <div class="header_temperature_wrapper">
+          <span class="weather_condition"><p>Ensolarado</p></span>
+          <span><p>50 °C</p></span>
+        </div>
+        <div class="infos">
+          <span>Pressão Atmosférica: 1012 hPa</span>
+          <span>Umidade: 60%</span>
+          <span>Precipitação: 20%</span>
+        </div>
+      </div>
+      <div class="forecast_list">
+        {% for weather in weathers %}    
+          <div class="weather_forecast">
+            <div class="data_condition">
+              <span class="header_forecast">{{ weather.date_time }}</span>
+              <span>Ensolarado</span>
+            </div>
+            <div class="infos">
+              <span>Pressão Atmosférica: 1012 hPa</span>
+              <span>Umidade: 60%</span>
+              <span>Precipitação: 20%</span>
+            </div>
+            <span class="temperature"><p>{{ weather.temperature }}</p></span>
+            <div class="button_edit_delete">
+              <button>Editar</button>
+              <button>Deletar</button>
+            </div>
+          </div>
+        {% endfor %}
+
+        <div class="weather_forecast">
+          <div class="data_condition">
+            <span class="header_forecast">2024-02-01 12:00</span>
+            <span>Ensolarado</span>
+          </div>
+          <div class="infos">
+            <span>Pressão Atmosférica: 1012 hPa</span>
+            <span>Umidade: 60%</span>
+            <span>Precipitação: 20%</span>
+          </div>
+          <span class="temperature"><p>50 °C</p></span>
+          <div class="button_edit_delete">
+            <button>Editar</button>
+            <button>Deletar</button>
+          </div>
+        </div>
+
+        <div class="weather_forecast">
+          <div class="data_condition">
+            <span class="header_forecast">2024-02-01 12:00</span>
+            <span>Ensolarado</span>
+          </div>
+          <div class="infos">
+            <span>Pressão Atmosférica: 1012 hPa</span>
+            <span>Umidade: 60%</span>
+            <span>Precipitação: 20%</span>
+          </div>
+          <span class="temperature"><p>50 °C</p></span>
+          <div class="button_edit_delete">
+            <button>Editar</button>
+            <button>Deletar</button>
+          </div>
+        </div>
+
+        <div class="weather_forecast">
+          <div class="data_condition">
+            <span class="header_forecast">2024-02-01 12:00</span>
+            <span>Ensolarado</span>
+          </div>
+          <div class="infos">
+            <span>Pressão Atmosférica: 1012 hPa</span>
+            <span>Umidade: 60%</span>
+            <span>Precipitação: 20%</span>
+          </div>
+          <span class="temperature"><p>50 °C</p></span>
+          <div class="button_edit_delete">
+            <button>Editar</button>
+            <button>Deletar</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
