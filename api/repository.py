@@ -18,8 +18,8 @@ class WeatherRepository:
         return collection
     
     def list(self):
-        data = self.__get_collection().find({})
-        return data
+        document = self.__get_collection().find({})
+        return document
     
     def create(self, document):
         self.__get_collection().insert_one(document)
