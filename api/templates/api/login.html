@@ -21,8 +21,8 @@
           <input type="password" id="password" name="password" required />
         </div>
         <span class="login_option">
-          <a href="./pages/create_user.html"><p>Se cadastrar</p></a>
-          <a href="./pages/forecasts.html"><p>Home</p></a>
+          <a href="{% url 'post_forecast' %}"><p>Se cadastrar</p></a>
+          <a href="{% url 'forecasts' %}"><p>Home</p></a>
         </span>
         <div class="input_wrapper">
           <button type="submit">Entrar</button>
