@@ -17,7 +17,9 @@
           name="city_name"
           placeholder="Cidade"
         />
-        <button type="submit"><a href="./post_forecast.html">+</a></button>
+        <button type="submit">
+          <a href="{% url 'post_forecast' %}">+</a>
+        </button>
       </div>
       <nav class="account_settings">
         <span><a href="./users.html">Usuários</a></span>
@@ -35,7 +37,9 @@
             <span>{{ weather.weather_conditions }}</span>
           </div>
           <div class="infos">
-            <span>Pressão Atmosférica: {{ weather.atmospheric_pressure }} hPa</span>
+            <span
+              >Pressão Atmosférica: {{ weather.atmospheric_pressure }} hPa</span
+            >
             <span>Umidade:{{ weather.humidity }}</span>
             <span>Precipitação: {{ weather.precipitation_percentage }}</span>
           </div>
