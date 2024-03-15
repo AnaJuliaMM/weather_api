@@ -6,26 +6,40 @@ from  django.http import HttpResponse
 from random import randrange
 from datetime import datetime
 from .repositories import WeatherRepository
+from .models import WeatherEntity
 
 
 
-class WeatherView(views.View):        
+class WeatherView(views.View):   
+    def login(request):
+        return render(request, "api/login.html")
+         
     def get(request):
         repository = WeatherRepository('forecasts')
         weathers = repository.list()
         return render(request, "api/forecasts.html", {"weathers": weathers})
+    
+    def post_forecast(request):
+        return render(request, "api/post_forecast.html")
+    
+    
+    def create(request):
+        return render(request, "api/post_forecast.html")
+    
 
-class WeatherGenerate(views.View):        
-    def get(request):
-        weathers = []
-        for i in range(10):
-            weathers.append(
-                WeatherEntity(
-                    temperature=randrange(start=17, stop=40),
-                    date_time=datetime.now()
-                ))
-        return render(request, "api/forecasts.html", {"weathers": weathers})
 
-    def login(request):
-         pass
+# class WeatherGenerate(views.View):        
+#     def get(request):
+#         weathers = []
+#         for i in range(10):
+#             weathers.append(
+#                 WeatherEntity(
+#                     temperature=randrange(start=17, stop=40),
+#                     date_time=datetime.now()
+#                 ))
+#         return render(request, "api/forecasts.html", {"weathers": weathers})
+
+    
+    
+   
  
