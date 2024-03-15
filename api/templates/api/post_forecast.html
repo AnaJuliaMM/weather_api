@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastre-se</title>
-    <link rel="stylesheet" href="../assets/style.css" />
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'api/style.css' %}" />
   </head>
   <body>
     <div class="login_wrapper">
       <h2>Adicionar nova previsão</h2>
-      <form action="">
+      <form id="new_forecast" method="post" action="{% url 'post_forecast' %}>
         <div class="input_wrapper">
           <label for="temperature">Temperatura:</label>
           <input
@@ -56,7 +58,7 @@
           <input type="text" id="condition" name="condition" required />
         </div>
         <span class="login_option">
-          <a href="./forecasts.html"><p>Ver Previsões</p></a>
+          <a href="{% url 'forecasts' %}"><p>Ver Previsões</p></a>
         </span>
         <div class="input_wrapper">
           <button type="submit">Cadastrar</button>
