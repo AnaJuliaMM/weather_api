@@ -5,7 +5,9 @@ from .views import WeatherGenerate
 
 
 urlpatterns = [
-    path('', WeatherView.get, name="view"),
-    path('generate', WeatherGenerate.get, name="generate")
+    path('', WeatherView.login, name="login"),
+    path('forecasts', WeatherView.get, name="forecasts"),
+    path('forecasts/forecast', WeatherView.post_forecast, name="post_forecast"),
+    # path('generate', WeatherGenerate.get, name="generate")
 
 ]
