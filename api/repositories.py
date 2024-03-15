@@ -1,15 +1,19 @@
 from django.conf import settings 
 import pymongo
 
+# ORM
 class WeatherRepository:
-    collection = ""
 
     def __init__(self, name) -> None:
         self.collection = name
     
     def __get_connection(self):
-        client = pymongo.MongoClient(getattr(settings, "MONGO_CONNECTION_STRING"))
-        connection = client[getattr(settings, "MONGO_DATABASE_NAME")]
+        MONGO_CONNECTION_STRING = getattr(settings, "MONGO_CONNECTION_STRING")
+        MONGO_DATABASE_NAME = getattr(settings, "MONGO_DATABASE_NAME")
+
+        client = pymongo.MongoClient(MONGO_CONNECTION_STRING)
+        connection = client[MONGO_DATABASE_NAME]
+        
         return connection
     
     def __get_collection(self):
