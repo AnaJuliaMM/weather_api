@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import views
+from rest_framework.views import View
 from .models import WeatherEntity
 from .serializer import TemperatureForecastSerializer
 from  django.http import HttpResponse
@@ -10,13 +10,18 @@ from .models import WeatherEntity
 
 
 
-class WeatherView(views.View):   
+class WeatherView(View):   
     def login(request):
         return render(request, "api/login.html")
          
-    def get(request):
+    def list(request):
         repository = WeatherRepository('forecasts')
         weathers = repository.list()
+        return render(request, "api/forecasts.html", {"weathers": weathers})
+    
+    def get(request, document_id):
+        repository = WeatherRepository('forecasts')
+        weathers = repository.getById(document_id)
         return render(request, "api/forecasts.html", {"weathers": weathers})
     
     def post_forecast(request):
