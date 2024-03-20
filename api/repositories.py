@@ -31,14 +31,17 @@ class WeatherRepository:
     def getById(self, document_id):
         document = self.__get_collection().find({"_id": ObjectId(document_id)})
         return document
+        
+    def filterByAttribute(self, attribute, value):
+        if attribute in ('id', '_id'):
+            return self.getById(value)
 
-        
-		
-    def getAll(self):
-        document = self.getCollection().find({})
-        
-    def getByAttribute(self, attribute, value):
-        pass
+        if attribute in ('temperature', 'atmospheric_pressure', 'humidity', 'precipitation_percentage'):
+            print(attribute == 'temperatue' or 'atmospheric_pressure' or 'humidity' or 'precipitation_percentage')
+            value = float(value) 
+
+        documents = self.__get_collection().find({attribute: value})
+        return list(documents)
         
     def insert(self, document) -> None:
         self.getCollection().insert_one(document)
