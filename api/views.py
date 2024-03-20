@@ -19,10 +19,18 @@ class WeatherView(View):
         weathers = repository.list()
         return render(request, "api/forecasts.html", {"weathers": weathers})
     
-    def get(request, document_id):
+    def getById(request, document_id):
         repository = WeatherRepository('forecasts')
         weathers = repository.getById(document_id)
         return render(request, "api/forecasts.html", {"weathers": weathers})
+    
+    def filterByAttribute(request, attribute, value):
+        repository = WeatherRepository('forecasts')
+        weathers = repository.filterByAttribute(attribute, value)
+        return render(request, "api/forecasts.html", {"weathers": weathers})
+
+
+
     
     def post_forecast(request):
         return render(request, "api/post_forecast.html")
