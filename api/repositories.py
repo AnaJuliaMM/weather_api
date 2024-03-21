@@ -37,17 +37,17 @@ class WeatherRepository:
             return self.getById(value)
 
         if attribute in ('temperature', 'atmospheric_pressure', 'humidity', 'precipitation_percentage'):
-            print(attribute == 'temperatue' or 'atmospheric_pressure' or 'humidity' or 'precipitation_percentage')
             value = float(value) 
 
         documents = self.__get_collection().find({attribute: value})
         return list(documents)
         
     def insert(self, document) -> None:
-        self.getCollection().insert_one(document)
+        self.__get_collection().insert_one(document)
         
-    def delete(self, document) -> None:
-        pass
+    def delete(self, document_id) -> None:
+        self.__get_collection().delete_one({"_id": ObjectId(document_id)})
+ 
         
     def deleteAll(self) -> None:
-        pass
+        self.__get_collection().delete_many({})
