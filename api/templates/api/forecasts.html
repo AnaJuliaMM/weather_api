@@ -17,12 +17,14 @@
           name="city_name"
           placeholder="Cidade"
         />
-        <button type="submit"><a href="./post_forecast.html">+</a></button>
+        <button type="submit">
+          <a href="{% url 'post_forecast' %}">+</a>
+        </button>
       </div>
       <nav class="account_settings">
         <span><a href="./users.html">Usuários</a></span>
         <span><a href="./my_account.html">Minha conta</a></span>
-        <span><a href="../index.html">Sair</a></span>
+        <span><a href="{% url 'login' %}">Sair</a></span>
       </nav>
     </header>
 
@@ -32,12 +34,14 @@
         <div class="weather_forecast">
           <div class="data_condition">
             <span class="header_forecast">{{ weather.date_time }}</span>
-            <span>Ensolarado</span>
+            <span>{{ weather.weather_conditions }}</span>
           </div>
           <div class="infos">
-            <span>Pressão Atmosférica: 1012 hPa</span>
-            <span>Umidade: 60%</span>
-            <span>Precipitação: 20%</span>
+            <span
+              >Pressão Atmosférica: {{ weather.atmospheric_pressure }} hPa</span
+            >
+            <span>Umidade:{{ weather.humidity }}</span>
+            <span>Precipitação: {{ weather.precipitation_percentage }}</span>
           </div>
           <span class="temperature"><p>{{ weather.temperature }}</p></span>
           <div class="button_edit_delete">
