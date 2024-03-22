@@ -29,6 +29,10 @@
     </header>
 
     <main class="main_forecast_mobile">
+      {% if error%}
+      <div>{{error}}</div>
+      {% endif %}
+
       <div class="forecast_list">
         {% for weather in weathers %}
         <div class="weather_forecast">
