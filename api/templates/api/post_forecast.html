@@ -13,7 +13,7 @@
       <h2>Adicionar nova previsão</h2>
       <form
         id="new_forecast"
-        action="{% url 'insert_forecast' %}"
+        action="{% url 'post_forecast' %}"
         method="post"
       >
         {% csrf_token %}
