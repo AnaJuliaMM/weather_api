@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import WeatherView
+from .views import WeatherView, WeatherTemplateView
 
 
 urlpatterns = [
     path('', WeatherView.login, name="login"),
     path('forecasts/', WeatherView.list, name="forecasts"),
-    path('forecasts/forecast/', WeatherView.post_forecast, name="post_forecast"),
+    path('forecasts/forecast/', WeatherTemplateView.post_forecast_template, name="post_forecast"),
     path('forecasts/insert/', WeatherView.post, name="insert_forecast"),
     path('forecasts/forecast/<str:document_id>/', WeatherView.getById, name="forecast"),
     path('forecasts/<str:attribute>/<str:value>/', WeatherView.filterByAttribute, name="filter"),
