@@ -7,6 +7,7 @@ from .serializer import WeatherSerializer
 from .repositories import WeatherRepository
 from .models import WeatherEntity
 from datetime import datetime
+from .forms import WeatherForm
 
 
 class WeatherView(View):   
@@ -95,8 +96,21 @@ class WeatherView(View):
         repository.deleteAll()
         return render(request, "api/forecasts.html")
     
-class WeatherTemplateView(View):
-    def post_forecast_template(request):
-        return render(request, "api/post_forecast.html")
-   
 
+class WeatherInsert(View):
+    def get(self, request):
+        weather_form = WeatherForm()
+        return render(request, "api/post_forecast.html", { "form": weather_form})
+     
+    def post(self, request):
+        weather_form = WeatherForm(request.POST)
+        if weather_form.is_valid():
+            serializer = WeatherSerializer(data=weather_form.data)
+            if serializer.is_valid():
+                repository = WeatherRepository('forecasts')
+                repository.insert(serializer.data)
+                return render(request, "api/forecasts.html", {"weathers": [serializer.data]})
+            else:
+                return render(request, "api/forecasts.html", {"error" : serializer.errors})
+        else: 
+            return render(request, "api/forecasts.html", {"error" : weather_form.errors})
